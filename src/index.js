@@ -8,6 +8,8 @@ const reducer = (state = 0, action) => {
       return state - 1;
     case 'RND':
       return state + action.value;
+      case 'RST':
+        return 0;      
     default:
       return state;  
   }
@@ -15,6 +17,7 @@ const reducer = (state = 0, action) => {
 
 const inc = () => ({type: 'INC'});
 const dec = () => ({type: 'DEC'});
+const rst = () => ({type: 'RST'});
 const rnd = (value) => ({type: 'RND', value});
 
 const store = createStore(reducer);
@@ -30,16 +33,12 @@ document.getElementById("dec").addEventListener('click', () => {
   store.dispatch(dec());
 });
 
-document.getElementById("rnd").addEventListener('click', () => {
-  const value = Math.floor(Math.random() * 10);
-  store.dispatch(rnd(value));
+document.getElementById("rst").addEventListener('click', () => {
+  store.dispatch(rst());
 });
+// document.getElementById("rnd").addEventListener('click', () => {
+//   const value = Math.floor(Math.random() * 10);
+//   store.dispatch(rnd(value));
+// });
 
-
-
-
-
-// store.dispatch({type: 'INC'});
-// store.dispatch({type: 'INC'});
-// store.dispatch({type: 'INC'});
 
